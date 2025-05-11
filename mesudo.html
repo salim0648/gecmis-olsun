@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Geçmiş Olsun Dostum</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #111, #333);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      color: white;
+    }
+
+    .center-message {
+      text-align: center;
+      z-index: 10;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #ff0000;
+      margin-bottom: 10px;
+    }
+
+    p.note {
+      font-size: 1.2em;
+      color: #ccc;
+    }
+
+    .card {
+      position: absolute;
+      width: 200px;
+      height: 120px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 2px solid #ff0000;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(255,0,0,0.4);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 1em;
+      cursor: pointer;
+      opacity: 0;
+      animation: floatIn 1s ease forwards;
+      transition: background 0.3s ease;
+    }
+
+    .card .message {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .card.active .message {
+      display: block;
+      opacity: 1;
+    }
+
+    .card:nth-of-type(2) { top: 10%; left: 5%; animation-delay: 0.5s; }
+    .card:nth-of-type(3) { top: 10%; right: 5%; animation-delay: 1s; }
+    .card:nth-of-type(4) { bottom: 10%; left: 5%; animation-delay: 1.5s; }
+    .card:nth-of-type(5) { bottom: 10%; right: 5%; animation-delay: 2s; }
+
+    @keyframes floatIn {
+      from {
+        transform: scale(0.5) translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Merkezdeki mesaj -->
+  <div class="center-message">
+    <h1>Geçmiş Olsun!</h1>
+    <p class="note">Not: Çok stres yapma, geçecek dostum.</p>
+  </div>
+
+  <!-- Kartlar (ilk kart mesaj içermiyor, sonra gelenler mesaj içeriyor) -->
+  <div class="card" onclick="toggleMessage(this)">
+    <div class="message">🌟 Her karanlığın sonunda bir ışık vardır.</div>
+  </div>
+  <div class="card" onclick="toggleMessage(this)">
+    <div class="message">🚗 Tıpkı Audi gibi güçlü ve dengelisin!</div>
+  </div>
+  <div class="card" onclick="toggleMessage(this)">
+    <div class="message">💪 Bu da geçer dostum, sen dayanıklısın.</div>
+  </div>
+  <div class="card" onclick="toggleMessage(this)">
+    <div class="message">💡 Her zorluk, yeni bir başlangıcın habercisidir.</div>
+  </div>
+
+  <script>
+    function toggleMessage(card) {
+      card.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
